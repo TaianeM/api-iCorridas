@@ -18,17 +18,26 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-    
+        'stripe_id',
         'name',
-        'email',
-        'phone',
-        'active',
         'cpf',
+        'email',
+        'celular',
+        'active',
         'premium',
+        'premium_date',
         'driver',
         'score',
+        'total_proposal',
+        'accepted_proposals',
+        'cnh_url',
+        'profile_picture_url',
+        'cnh_approved',
         'password',
         'birthdate',
+        'gender_id',
+        'geo_state_id',
+        'permission_id'
       
     ];
 

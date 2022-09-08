@@ -3,6 +3,6 @@
     <title> API - ICORRIDAS </title>
 </head>
     <body>
-        <H1> 'SUCCESS - API' </H1>
+        <h1> 'SUCCESS - API' </h1>
     </body>
 </html>
