@@ -38,9 +38,7 @@ class User extends Authenticatable
         'gender_id',
         'geo_state_id',
         'permission_id'
-      
     ];
-
   
 
 }
