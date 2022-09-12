@@ -32,9 +32,9 @@ return new class extends Migration
             $table->string('cnh_approved');
             $table->string('password')->nullable();
             $table->date('birthdate')->nullable();
-            $table->foreignId('gender_id')->constrained('gender')->onDelete('cascade');
-            $table->foreignId('geo_state_id')->constrained('geo_state')->onDelete('cascade');
-            $table->foreignId('permission_id')->constrained('permission')->onDelete('cascade');
+            $table->foreignId('gender_id')->constrained('gender');
+            $table->foreignId('geo_state_id')->constrained('geo_state');
+            $table->foreignId('permission_id')->constrained('permission');
             $table->timestamps();
         });
     }

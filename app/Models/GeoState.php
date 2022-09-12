@@ -12,4 +12,16 @@ class GeoState extends Model
     protected $fillable = [
         'name'
     ];
+
+     /**
+     * Get all of the user for the GeoState
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function user()
+    {
+        return $this->hasMany('App\Models\User', 'geo_state_id');
+    }
+
+    
 }

@@ -12,4 +12,17 @@ class Category extends Model
     protected $fillable = [
         'name'
     ];
+
+
+    /**
+  * Get all of the ride for the category
+  *
+  * @return \Illuminate\Database\Eloquent\Relations\HasMany
+  */
+ public function ride()
+ {
+     return $this->hasMany('App\Models\Ride', 'category_id');
+ }
+
+
 }

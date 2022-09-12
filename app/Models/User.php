@@ -40,5 +40,44 @@ class User extends Authenticatable
         'permission_id'
     ];
   
+    /**
+     * Get the Gender that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function gender()
+    {
+        return $this->belongsTo('App\Models\Gender', 'gender_id');
+    }
+
+       /**
+     * Get the Geo State that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function geoState()
+    {
+        return $this->belongsTo('App\Models\GeoState', 'geo_state_id');
+    }
+
+   /**
+     * Get the Permission that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function permission()
+    {
+        return $this->belongsTo('App\Models\Permission', 'permission_id');
+    }
+
+ /**
+  * Get all of the ride for the User
+  *
+  * @return \Illuminate\Database\Eloquent\Relations\HasMany
+  */
+ public function ride()
+ {
+     return $this->hasMany('App\Models\Ride', 'user_id');
+ }
 
 }
