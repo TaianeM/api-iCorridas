@@ -24,16 +24,19 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'nullable',
-            'email' => 'nullable',
-            'phone' => 'nullable',
+            'celular' => 'nullable',
             'cpf' => 'nullable',
-            'active' => 'nullable',
             'driver' => 'nullable',
+            'email' => 'nullable',
+            'geo_state_id' => 'nullable',
+            'id' => 'nullable',
+            'name' => 'nullable',
             'premium' => 'nullable',
             'score' => 'nullable',
-            'password' => 'nullable',
-            'birthdate' => 'nullable',
+            'stripe_id' => 'nullable',
+            'cnh_url' => 'nullable',
+            'cnh_approved' => 'nullable',
+            'gender_id' => 'nullable',
         ];
     }
 }

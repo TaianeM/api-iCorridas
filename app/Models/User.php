@@ -37,7 +37,9 @@ class User extends Authenticatable
         'birthdate',
         'gender_id',
         'geo_state_id',
-        'permission_id'
+        'permission_id',
+        'code_user',
+        
     ];
   
     /**
@@ -80,4 +82,14 @@ class User extends Authenticatable
      return $this->hasMany('App\Models\Ride', 'user_id');
  }
 
+  /**
+  * Get all of the CodeInvite for the User
+  *
+  * @return \Illuminate\Database\Eloquent\Relations\HasMany
+  */
+  public function CodeInvite()
+  {
+      return $this->hasMany('App\Models\CodeInvite', 'user_id');
+  }
+ 
 }

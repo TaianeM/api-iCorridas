@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\UserRequest;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Auth;
-
-
+use PhpParser\Node\Stmt\Function_;
+use Dirape\Token\Token;
 class UserController extends Controller
 {
     /**
@@ -17,7 +18,16 @@ class UserController extends Controller
      */
     public function index()
     {
-            $users = User::all();
+            $users = User::get([ 'celular',
+            'cpf',
+            'driver',
+            'email',
+           // 'geo_state_id',
+           'code_user',
+            'id',
+            'name',
+            'premium',
+            'score']);
             return response($users);
     }
 
@@ -30,11 +40,17 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        try {
-           
-            $validated = $request->validated();
+        try { 
+            $code = (new Token())->Unique('users', 'code_user', 6);
+            $user = new User;
 
-            User::create($validated)->save();
+            $user->name = $request->name;
+            $user->cpf = $request->cpf;
+            $user->celular = $request->celular;
+            $user->email = $request->email;
+            $user->code_user = $code;
+                             
+            $user->save();
 
             return response()->json([
 
@@ -44,13 +60,9 @@ class UserController extends Controller
 
         } catch (\Throwable $th) {
 
-      
-            return response()->json([
-                'message'=>'Error in create a user!'
-            ], 402);
+            return $th;
         }
     }
-
     /**
      * Display the specified resource.
      *
@@ -62,29 +74,6 @@ class UserController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        try {
-          
-        $user = User::findOrFail($id);
-
-        return response()->json($user);
-
-       
-
-        } catch (\Throwable $th) {
-
-        return response()->json([
-            'message'=>'Something goes wrong!'
-        ], 402);
-        }
-    }
 
     /**
      * Update the specified resource in storage.
